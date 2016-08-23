@@ -2,7 +2,7 @@
 
 ```
 docker-compose up
-./gradlew clean build
+./gradlew clean build runShadow
 ```
 
 
