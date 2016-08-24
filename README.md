@@ -24,8 +24,30 @@ For simple testing we can just upload the log file manually
 nc localhost 5000 < /tmp/app.log
 ```
 
-Or you can perodically upload the file by downloading and configuring: https://www.elastic.co/downloads/beats/filebeat
+Or you can perodically upload the file by downloading and configuring: https://www.elastic.co/downloads/beats/filebeat 
 
+You can try filebeat with the following sample filebeat.yml:
+```
+filebeat:
+  prospectors:
+    -
+      paths:
+        - /tmp/app.log
+      input_type: log
+
+output:
+
+  elasticsearch:
+    hosts: ["localhost:5000"]
+
+shipper:
+
+logging:
+
+  files:
+
+    rotateeverybytes: 10485760 # = 10MB
+```
 
 ## Kibana access to see output
 
